@@ -15,7 +15,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
+        $customers = Customer::paginate(10);
         return view('customer.index')->with('customers', $customers);
     }
 
@@ -78,10 +78,13 @@ class CustomerController extends Controller
         $customer->update(
             $request->input()
         );
-        $customers = Customer::all();
+        // $customers = Customer::all();
+        // return redirect()
+        //     ->route('customers.index')->with('customers', $customers)
+        //     ->with('message', 'Customer updated');
         return redirect()
-            ->route('customers.index')->with('customers', $customers)
-            ->with('message', 'Customer updated');
+        ->route('customers.index')
+        ->with('success', 'Customer has been updated!!');
     }
 
     /**

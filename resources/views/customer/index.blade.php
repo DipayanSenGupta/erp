@@ -48,6 +48,8 @@
                 </td>
              </tr>
          @endforeach
-   </tbody>
+         {!! $customers->links() !!}
+
+        </tbody>
 </table>
 @endsection
